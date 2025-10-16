@@ -203,7 +203,7 @@ calorie-tracker/
 
 ## 📄 רישיון
 
-B.Ed. in Computer Science
+B.Ed. in Computer Science,  
 Software Engineer from the Institute for Technological Training
 
 
