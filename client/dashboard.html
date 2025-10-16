@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>לוח בקרה - מעקב קלוריות</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- כותרת עליונה עם פרטי משתמש -->
+        <header class="header dashboard-header">
+            <div class="header-content">
+                <h1>🍽️ מעקב קלוריות שלי</h1>
+                <div class="user-info">
+                    <span id="userEmail">טוען...</span>
+                    <button id="logoutButton" class="btn btn-small">יציאה</button>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content dashboard-content">
+            <!-- סיכום יומי -->
+            <section class="summary-section">
+                <h2>סיכום היום</h2>
+                <div class="calorie-summary">
+                    <div class="summary-card">
+                        <div class="summary-label">כמה אכלתי</div>
+                        <div class="summary-value" id="totalCaloriesToday">0</div>
+                        <div class="summary-unit">קלוריות</div>
+                    </div>
+                    <div class="summary-divider">מתוך</div>
+                    <div class="summary-card">
+                        <div class="summary-label">יעד יומי</div>
+                        <div class="summary-value" id="dailyGoal">2000</div>
+                        <div class="summary-unit">קלוריות</div>
+                    </div>
+                    <div class="summary-card remaining">
+                        <div class="summary-label">כמה נותר לאכול</div>
+                        <div class="summary-value" id="remainingCalories">2000</div>
+                        <div class="summary-unit">קלוריות</div>
+                    </div>
+                </div>
+                
+                <!-- פס התקדמות -->
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+                
+                <!-- כפתור לשינוי יעד -->
+                <button id="updateGoalButton" class="btn btn-secondary btn-small">
+                    ✏️ עדכן יעד יומי
+                </button>
+            </section>
+
+            <!-- אזור הוספת ארוחה -->
+            <section class="add-meal-section">
+                <h2>הוסף ארוחה</h2>
+                
+                <!-- טאבים לבחירה -->
+                <div class="tabs">
+                    <button class="tab-button active" data-tab="camera">
+                        📸 צלם/העלה תמונה
+                    </button>
+                    <button class="tab-button" data-tab="manual">
+                        ✍️ הזנה ידנית
+                    </button>
+                </div>
+
+                <!-- תוכן טאב מצלמה/תמונה -->
+                <!-- חיבור: Client → Server (POST /api/ai/analyze-image) -->
+                <div class="tab-content active" id="cameraTab">
+                    <div class="upload-area">
+                        <!-- כפתור צילום (נגיש רק בניידים) -->
+                        <label for="cameraInput" class="btn btn-primary camera-button">
+                            📷 צלם עכשיו
+                        </label>
+                        <input 
+                            type="file" 
+                            id="cameraInput" 
+                            accept="image/*" 
+                            capture="environment"
+                            style="display: none;"
+                        >
+                        
+                        <!-- כפתור העלאת תמונה -->
+                        <label for="imageInput" class="btn btn-secondary">
+                            🖼️ העלה תמונה
+                        </label>
+                        <input 
+                            type="file" 
+                            id="imageInput" 
+                            accept="image/*"
+                            style="display: none;"
+                        >
+                        
+                        <!-- תצוגה מקדימה של התמונה -->
+                        <div id="imagePreview" style="display: none;">
+                            <img id="previewImage" alt="תצוגה מקדימה">
+                            <button id="analyzeButton" class="btn btn-primary">
+                                🔍 זהה
+                            </button>
+                        </div>
+                        
+                        <!-- תוצאות זיהוי - מודל עריכה -->
+                        <div id="analysisResult" style="display: none;">
+                            <h3>✅ הארוחה זוהתה!</h3>
+                            <form id="editAnalysisForm">
+                                <div class="form-group">
+                                    <label for="aiMealName">שם הארוחה:</label>
+                                    <input type="text" id="aiMealName" class="editable-field">
+                                </div>
+                                <div class="form-group">
+                                    <label for="aiCalories">קלוריות:</label>
+                                    <input type="number" id="aiCalories" class="editable-field" min="0">
+                                </div>
+                                <p class="confidence-info"><small id="confidenceText"></small></p>
+                                <button type="submit" class="btn btn-primary">
+                                    💾 שמור והוסף ארוחה
+                                </button>
+                                <button type="button" id="cancelAnalysisButton" class="btn btn-secondary">
+                                    ✖️ ביטול
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- תוכן טאב הזנה ידנית -->
+                <!-- חיבור: Client → Server (POST /api/meals/manual) -->
+                <div class="tab-content" id="manualTab">
+                    <form id="manualMealForm" class="meal-form">
+                        <div class="form-group">
+                            <label for="mealName">שם הארוחה:</label>
+                            <input 
+                                type="text" 
+                                id="mealName" 
+                                placeholder="לדוגמה: סלט ירקות"
+                                required
+                            >
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="calories">קלוריות:</label>
+                            <input 
+                                type="number" 
+                                id="calories" 
+                                placeholder="250"
+                                min="0"
+                                required
+                            >
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="notes">הערות (אופציונלי):</label>
+                            <textarea 
+                                id="notes" 
+                                placeholder="הערות נוספות..."
+                                rows="3"
+                            ></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            ➕ הוסף ארוחה
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- רשימת ארוחות היום -->
+            <!-- חיבור: Client → Server (GET /api/meals/today) -->
+            <section class="meals-section">
+                <h2>ארוחות היום</h2>
+                <div id="todayMealsList" class="meals-list">
+                    <p class="loading">טוען ארוחות...</p>
+                </div>
+            </section>
+
+            <!-- היסטוריה -->
+            <section class="history-section">
+                <h2>📅 היסטוריה</h2>
+                <button id="viewHistoryButton" class="btn btn-secondary">
+                    צפה בהיסטוריה
+                </button>
+                <div id="historyContent" style="display: none;">
+                    <!-- לוח שנה -->
+                    <div class="calendar-container">
+                        <div class="calendar-header">
+                            <button id="prevMonthBtn" class="calendar-nav-btn">◀</button>
+                            <h3 id="currentMonthYear">טוען...</h3>
+                            <button id="nextMonthBtn" class="calendar-nav-btn">▶</button>
+                        </div>
+                        <div class="calendar-grid" id="calendarGrid">
+                            <p class="loading">טוען לוח שנה...</p>
+                        </div>
+                    </div>
+                    
+                    <!-- פירוט יום נבחר -->
+                    <div id="selectedDayDetails" style="display: none;">
+                        <div class="day-details-header">
+                            <h3 id="selectedDayTitle"></h3>
+                            <button id="closeDayDetailsBtn" class="btn btn-small">✖️ סגור</button>
+                        </div>
+                        <div id="selectedDayMeals"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal לעדכון יעד -->
+    <div id="updateGoalModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>עדכון יעד קלורי יומי</h2>
+            <form id="updateGoalForm">
+                <div class="form-group">
+                    <label for="newDailyGoal">יעד חדש:</label>
+                    <input 
+                        type="number" 
+                        id="newDailyGoal" 
+                        min="500" 
+                        max="10000"
+                        required
+                    >
+                </div>
+                <button type="submit" class="btn btn-primary">עדכן</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Modal לעריכת ארוחה -->
+    <div id="editMealModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-edit-modal">&times;</span>
+            <h2>✏️ עריכת ארוחה</h2>
+            <form id="editMealForm">
+                <input type="hidden" id="editMealId">
+                <div class="form-group">
+                    <label for="editMealName">שם הארוחה:</label>
+                    <input 
+                        type="text" 
+                        id="editMealName"
+                        required
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="editMealCalories">קלוריות:</label>
+                    <input 
+                        type="number" 
+                        id="editMealCalories"
+                        min="0"
+                        required
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="editMealNotes">הערות:</label>
+                    <textarea 
+                        id="editMealNotes"
+                        rows="3"
+                    ></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">💾 שמור שינויים</button>
+                <button type="button" class="btn btn-secondary close-edit-modal">ביטול</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- קישורים לסקריפטים -->
+    <!-- זה כל החיבורים: Client → Server → Database → AI -->
+    <script src="js/api.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

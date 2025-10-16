@@ -1,0 +1,958 @@
+/* =========================================
+   עיצוב כללי ואיפוסים - Mobile First
+   ========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    direction: rtl;
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* =========================================
+   קונטיינר ראשי
+   ========================================= */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+/* =========================================
+   כותרת - Mobile Optimized
+   ========================================= */
+
+.header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px 15px;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.8em;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-size: 1em;
+    opacity: 0.9;
+}
+
+.back-link {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    margin-top: 10px;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.back-link:hover {
+    opacity: 1;
+}
+
+/* =========================================
+   תוכן ראשי - Mobile First
+   ========================================= */
+
+.main-content {
+    padding: 15px;
+}
+
+/* =========================================
+   תיבת ברוכים הבאים
+   ========================================= */
+
+.welcome-box {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.welcome-box h2 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.welcome-box p {
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* =========================================
+   כפתורים - Mobile Optimized
+   ========================================= */
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 15px 30px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: white;
+    color: #667eea;
+    border: 2px solid #667eea;
+}
+
+.btn-secondary:hover {
+    background: #667eea;
+    color: white;
+}
+
+.btn-small {
+    padding: 8px 20px;
+    font-size: 0.9em;
+}
+
+.btn-danger {
+    background: #e74c3c;
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #c0392b;
+}
+
+/* =========================================
+   תיבת תכונות
+   ========================================= */
+
+.features-box {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 15px;
+    margin-top: 40px;
+}
+
+.features-box h3 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.features-list {
+    list-style: none;
+    font-size: 1.1em;
+    color: #555;
+}
+
+.features-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.features-list li:last-child {
+    border-bottom: none;
+}
+
+/* =========================================
+   טפסים
+   ========================================= */
+
+.form-box {
+    max-width: 500px;
+    margin: 0 auto;
+    background: #f8f9fa;
+    padding: 40px;
+    border-radius: 15px;
+}
+
+.auth-form h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.form-group small {
+    display: block;
+    margin-top: 5px;
+    color: #888;
+    font-size: 0.85em;
+}
+
+.form-footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #666;
+}
+
+.form-footer a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}
+
+/* =========================================
+   הודעות
+   ========================================= */
+
+.message {
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.message.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* =========================================
+   לוח בקרה
+   ========================================= */
+
+.dashboard-header {
+    padding: 20px 30px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.dashboard-content {
+    padding: 30px;
+}
+
+/* =========================================
+   סיכום יומי - Mobile Optimized עם עיגולים
+   ========================================= */
+
+.summary-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px 15px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.summary-section h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+.calorie-summary {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.summary-card {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px 10px;
+    border-radius: 50%;
+    backdrop-filter: blur(10px);
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    max-width: 110px;
+}
+
+.summary-card.remaining {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.summary-label {
+    font-size: 0.7em;
+    opacity: 0.9;
+    margin-bottom: 5px;
+    line-height: 1.2;
+}
+
+.summary-value {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 3px 0;
+}
+
+.summary-unit {
+    font-size: 0.65em;
+    opacity: 0.8;
+}
+
+.summary-divider {
+    display: none;
+}
+
+/* =========================================
+   פס התקדמות
+   ========================================= */
+
+.progress-bar-container {
+    width: 100%;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    height: 100%;
+    background: #4caf50;
+    transition: width 0.5s ease;
+    border-radius: 10px;
+}
+
+/* =========================================
+   הוספת ארוחה
+   ========================================= */
+
+.add-meal-section {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+}
+
+.add-meal-section h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* טאבים */
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ddd;
+}
+
+.tab-button {
+    padding: 12px 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    color: #666;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s;
+}
+
+.tab-button.active {
+    color: #667eea;
+    border-bottom-color: #667eea;
+    font-weight: bold;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* אזור העלאה */
+.upload-area {
+    text-align: center;
+    padding: 30px;
+}
+
+.camera-button {
+    margin-bottom: 15px;
+}
+
+#imagePreview {
+    margin-top: 20px;
+}
+
+#previewImage {
+    max-width: 100%;
+    max-height: 400px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+#analysisResult {
+    background: #e8f5e9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+#analysisResult {
+    background: #e8f5e9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+#analysisResult h3 {
+    color: #2e7d32;
+    margin-bottom: 15px;
+}
+
+.editable-field {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #4caf50;
+    border-radius: 8px;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+.confidence-info {
+    color: #666;
+    margin: 10px 0;
+    text-align: center;
+}
+
+#cancelAnalysisButton {
+    margin-top: 10px;
+}
+
+/* =========================================
+   רשימת ארוחות - Mobile Optimized
+   ========================================= */
+
+.meals-section {
+    margin-bottom: 30px;
+}
+
+.meals-section h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.3em;
+}
+
+.meals-list {
+    display: grid;
+    gap: 15px;
+}
+
+.meal-card {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-right: 4px solid #667eea;
+}
+
+.meal-info h3 {
+    color: #333;
+    margin-bottom: 5px;
+    font-size: 1.1em;
+    word-break: break-word;
+}
+
+.meal-info p {
+    color: #666;
+    font-size: 0.85em;
+    margin: 3px 0;
+}
+
+.meal-calories {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #667eea;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.meal-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.meal-actions .btn {
+    flex: 1;
+    min-width: 100px;
+}
+
+.loading {
+    text-align: center;
+    color: #999;
+    padding: 20px;
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+    .meal-card {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+    }
+    
+    .meal-info h3 {
+        font-size: 1.2em;
+    }
+    
+    .meal-calories {
+        font-size: 1.5em;
+        padding: 0;
+    }
+    
+    .meal-actions {
+        flex-wrap: nowrap;
+    }
+    
+    .meal-actions .btn {
+        flex: 0;
+        min-width: auto;
+    }
+}
+
+/* =========================================
+   מודאל
+   ========================================= */
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 2em;
+    cursor: pointer;
+    color: #999;
+}
+
+.close-modal:hover {
+    color: #333;
+}
+
+/* =========================================
+   לוח שנה - Calendar
+   ========================================= */
+
+.calendar-container {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-header h3 {
+    margin: 0;
+    color: #667eea;
+    font-size: 1.3em;
+}
+
+.calendar-nav-btn {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: all 0.3s;
+}
+
+.calendar-nav-btn:hover {
+    background: #764ba2;
+    transform: scale(1.1);
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.calendar-day-header {
+    text-align: center;
+    font-weight: bold;
+    padding: 10px 5px;
+    color: #667eea;
+    font-size: 0.9em;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: #f8f9fa;
+    position: relative;
+}
+
+.calendar-day.other-month {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.calendar-day.today {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 0 0 2px #667eea;
+}
+
+.calendar-day.has-meals {
+    background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+    color: white;
+    font-weight: bold;
+}
+
+.calendar-day.has-meals.today {
+    background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+    box-shadow: 0 0 0 3px #4caf50;
+}
+
+.calendar-day:not(.other-month):hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.calendar-day-number {
+    font-size: 1em;
+    margin-bottom: 2px;
+}
+
+.calendar-day-calories {
+    font-size: 0.7em;
+    color: #666;
+    background: rgba(255,255,255,0.9);
+    padding: 2px 5px;
+    border-radius: 10px;
+    margin-top: 2px;
+}
+
+.calendar-day.today .calendar-day-calories {
+    background: rgba(255,255,255,0.3);
+    color: white;
+}
+
+/* פירוט יום */
+.day-details-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px;
+    border-radius: 15px 15px 0 0;
+    margin-top: 20px;
+}
+
+.day-details-header h3 {
+    margin: 0;
+    font-size: 1.1em;
+}
+
+#selectedDayDetails {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+#selectedDayMeals {
+    padding: 15px;
+}
+
+.day-meal-item {
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border-right: 4px solid #667eea;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.day-meal-info h4 {
+    margin: 0;
+    color: #333;
+    font-size: 1em;
+    word-break: break-word;
+}
+
+.day-meal-info p {
+    margin: 0;
+    color: #666;
+    font-size: 0.85em;
+}
+
+.day-meal-calories {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #667eea;
+    text-align: center;
+}
+
+.day-total {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+    .day-details-header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+    }
+    
+    .day-details-header h3 {
+        font-size: 1.3em;
+    }
+    
+    #selectedDayMeals {
+        padding: 20px;
+    }
+    
+    .day-meal-item {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+    }
+    
+    .day-meal-info h4 {
+        font-size: 1.1em;
+    }
+    
+    .day-meal-info p {
+        font-size: 0.9em;
+    }
+    
+    .day-meal-calories {
+        font-size: 1.3em;
+        text-align: right;
+    }
+    
+    .day-total {
+        font-size: 1.2em;
+    }
+}
+
+/* Responsive Calendar */
+@media (max-width: 400px) {
+    .calendar-day-number {
+        font-size: 0.9em;
+    }
+    
+    .calendar-day-calories {
+        font-size: 0.6em;
+        padding: 1px 3px;
+    }
+    
+    .calendar-grid {
+        gap: 3px;
+    }
+}
+
+/* =========================================
+   פוטר
+   ========================================= */
+
+.footer {
+    background: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+    color: #666;
+}
+
+/* =========================================
+   Responsive - מסכים גדולים (Desktop)
+   ========================================= */
+
+@media (min-width: 768px) {
+    body {
+        padding: 20px;
+    }
+    
+    .header h1 {
+        font-size: 2.5em;
+    }
+    
+    .subtitle {
+        font-size: 1.2em;
+    }
+    
+    .main-content {
+        padding: 40px;
+    }
+    
+    .action-buttons {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .btn {
+        width: auto;
+        padding: 15px 40px;
+    }
+    
+    .calorie-summary {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .summary-card {
+        max-width: 150px;
+        padding: 25px 20px;
+    }
+    
+    .summary-label {
+        font-size: 0.85em;
+        margin-bottom: 8px;
+    }
+    
+    .summary-value {
+        font-size: 2.2em;
+        margin: 8px 0;
+    }
+    
+    .summary-unit {
+        font-size: 0.8em;
+    }
+    
+    .summary-divider {
+        display: none;
+    }
+    
+    .header-content {
+        flex-direction: row;
+        text-align: left;
+    }
+}

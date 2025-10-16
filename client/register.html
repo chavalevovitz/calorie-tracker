@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הרשמה - מעקב קלוריות</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🍽️ הרשמה למערכת</h1>
+            <a href="index.html" class="back-link">← חזרה לעמוד הראשי</a>
+        </header>
+
+        <main class="main-content">
+            <div class="form-box">
+                <!-- טופס הרשמה -->
+                <!-- חיבור: Client → Server (POST /api/auth/register) -->
+                <form id="registerForm" class="auth-form">
+                    <h2>צור חשבון חדש</h2>
+                    
+                    <!-- הודעת שגיאה/הצלחה -->
+                    <div id="registerMessage" class="message" style="display: none;"></div>
+                    
+                    <!-- שדה אימייל -->
+                    <div class="form-group">
+                        <label for="registerEmail">אימייל:</label>
+                        <input 
+                            type="email" 
+                            id="registerEmail" 
+                            name="email" 
+                            placeholder="example@email.com"
+                            required
+                        >
+                    </div>
+                    
+                    <!-- שדה סיסמה -->
+                    <div class="form-group">
+                        <label for="registerPassword">סיסמה:</label>
+                        <input 
+                            type="password" 
+                            id="registerPassword" 
+                            name="password" 
+                            placeholder="לפחות 6 תווים"
+                            minlength="6"
+                            required
+                        >
+                    </div>
+                    
+                    <!-- שדה אישור סיסמה -->
+                    <div class="form-group">
+                        <label for="confirmPassword">אישור סיסמה:</label>
+                        <input 
+                            type="password" 
+                            id="confirmPassword" 
+                            name="confirmPassword" 
+                            placeholder="הזן את הסיסמה שוב"
+                            minlength="6"
+                            required
+                        >
+                    </div>
+                    
+                    <!-- שדה יעד קלורי יומי -->
+                    <div class="form-group">
+                        <label for="dailyCalorieGoal">יעד קלוריות יומי:</label>
+                        <input 
+                            type="number" 
+                            id="dailyCalorieGoal" 
+                            name="dailyCalorieGoal" 
+                            placeholder="2000"
+                            min="500"
+                            max="10000"
+                            value="2000"
+                        >
+                        <small>מומלץ: 2000-2500 קלוריות ליום</small>
+                    </div>
+                    
+                    <!-- כפתור שליחה -->
+                    <button type="submit" class="btn btn-primary" id="registerButton">
+                        הרשמה
+                    </button>
+                    
+                    <!-- קישור להתחברות -->
+                    <p class="form-footer">
+                        כבר יש לך חשבון? 
+                        <a href="login.html">התחבר כאן</a>
+                    </p>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <!-- קישור לסקריפט JavaScript -->
+    <!-- זה החיבור: Client → Server (דרך api.js ו-auth.js) -->
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>
